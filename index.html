@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    
     <style>
         html {
             box-sizing: border-box;
@@ -86,19 +87,19 @@
             align-items: center;
         }
 
-        .panel > *:first-child {
+        .panel>*:first-child {
             transform: translateY(-100%);
         }
 
-        .panel.open-active > *:first-child {
+        .panel.open-active>*:first-child {
             transform: translateY(0);
         }
 
-        .panel > *:last-child {
+        .panel>*:last-child {
             transform: translateY(100%);
         }
 
-        .panel.open-active > *:last-child {
+        .panel.open-active>*:last-child {
             transform: translateY(0);
         }
 
@@ -123,12 +124,6 @@
             text-decoration: none;
         }
     </style>
-
-
-
-
-
-
 
     <div class="panels">
         <div class="panel panel1">
@@ -158,16 +153,24 @@
         </div>
     </div>
 
-
-
-
-
     <script>
+        const panels = document.querySelectorAll('.panel');
+
+        function toggleOpen() {
+            this.classList.toggle('open');
+        }
+
+        function toggleActive(e) {
+            if (e.propertyName.includes('flex')) {
+                this.classList.toggle('open-active');
+            }
+        }
+
+        panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+        panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+
 
     </script>
-
-
-
 
 </body>
 
